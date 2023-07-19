@@ -1,4 +1,3 @@
-//Merge sort
 export const mergeSort = (inArr) => {
   //create copy on input array
   let arr = [...inArr];
@@ -28,7 +27,6 @@ export const mergeSort = (inArr) => {
   return [...finalArr, ...sortedLeft, ...sortedRight];
 };
 
-//Insertion sort
 export const insertionSort = (inArr) => {
   //create copy on input array
   let arr = [...inArr];
@@ -48,7 +46,6 @@ export const insertionSort = (inArr) => {
   return arr;
 };
 
-//Bubble sort
 export const bubbleSort = (inArr) => {
   //create copy on input array
   let arr = [...inArr];
@@ -65,4 +62,28 @@ export const bubbleSort = (inArr) => {
   }
 
   return arr;
+};
+
+export const quickSort = (inArr) => {
+  if (inArr.length < 2) return inArr;
+
+  const arr = [...inArr];
+  //get pivot position, remove elem at position
+  const pivotIndex = Math.floor(arr.length / 2);
+  const pivot = arr.splice(pivotIndex, 1)[0];
+
+  const left = [];
+  const right = [];
+
+  //add elems less to left, greater to right
+  for (const num of arr) {
+    if (num < pivot) {
+      left.push(num);
+    } else {
+      right.push(num);
+    }
+  }
+
+  //return organised arr with pivot in the middle
+  return [...quickSort(left), pivot, ...quickSort(right)];
 };

@@ -1,7 +1,7 @@
 import "./App.css";
-import { bubbleSort } from "./logic/sortLogic";
+import { quickSort } from "./logic/sortLogic";
 
-const sorted = bubbleSort([3, 2, 8, 4, 6, 1, 0, 3, 7, 9]);
+const sorted = quickSort([3, 2, 8, 4, 1, 6, 0, 3, 7, 9]);
 
 function App() {
   return <div className="App">{sorted}</div>;
