@@ -1,5 +1,5 @@
 //Merge sort
-function mergeSort(arr) {
+export const mergeSort = (arr) => {
   if (arr.length < 2) {
     return arr;
   }
@@ -16,15 +16,11 @@ function mergeSort(arr) {
   //merge the two halves
   const finalArr = [];
   while (sortedLeft.length && sortedRight.length) {
-    if (sortedLeft[0] === sortedRight[0]) {
-      //remove duplicates
-      sortedLeft.shift();
-      finalArr.push(sortedRight.shift());
-    } else if (sortedLeft[0] < sortedRight[0]) {
+    if (sortedLeft[0] < sortedRight[0]) {
       finalArr.push(sortedLeft.shift());
     } else {
       finalArr.push(sortedRight.shift());
     }
   }
   return [...finalArr, ...sortedLeft, ...sortedRight];
-}
+};
