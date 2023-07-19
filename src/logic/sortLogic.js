@@ -1,5 +1,8 @@
 //Merge sort
-export const mergeSort = (arr) => {
+export const mergeSort = (inArr) => {
+  //create copy on input array
+  let arr = [...inArr];
+
   if (arr.length < 2) {
     return arr;
   }
@@ -23,4 +26,24 @@ export const mergeSort = (arr) => {
     }
   }
   return [...finalArr, ...sortedLeft, ...sortedRight];
+};
+
+//Insertion sort
+export const insertionSort = (inArr) => {
+  //create copy on input array
+  let arr = [...inArr];
+
+  for (let i = 1; i < arr.length; i++) {
+    let j = i;
+
+    //if curr elem is less than one of prev elems, then swap them
+    while (j > 0 && arr[j] < arr[j - 1]) {
+      //swapping with JS destructuring
+      [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+
+      j--;
+    }
+  }
+
+  return arr;
 };
