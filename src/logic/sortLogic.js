@@ -47,3 +47,22 @@ export const insertionSort = (inArr) => {
 
   return arr;
 };
+
+//Bubble sort
+export const bubbleSort = (inArr) => {
+  //create copy on input array
+  let arr = [...inArr];
+
+  for (let i = arr.length - 1; i > 0; i--) {
+    let j = 0;
+
+    //compare two consecutive elems and bubble largest to the end
+    for (j; j < i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+
+  return arr;
+};
