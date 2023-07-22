@@ -7,20 +7,36 @@ const myArr = [
 
 function App() {
   return (
-    <div className="max-w-7xl flex-col">
-      <div className="text-xl h-10">Kalooli</div>
+    <div className="w-screen flex flex-col items-center">
+      <header className="w-full bg-[#8EB1C7] p-4 flex justify-center">
+        <div className="max-w-7xl w-full flex justify-between items-center">
+          <h1 className="text-xl h-10">Sort visualizer</h1>
+          <div className="text-xl h-10 flex gap-2">
+            <button>Algorithm1</button>
+            <button>Algorithm2</button>
+            <button>Algorithm3</button>
+            <button>Algorithm4</button>
+          </div>
+        </div>
+      </header>
 
-      <div className="grid grid-cols-[repeat(auto-fit,_1rem)] items-center justify-center">
-        {myArr.map((val, index) => {
-          return (
-            <div
-              key={index}
-              className="array-div"
-              style={{ height: `${val * 5}px` }}
-            ></div>
-          );
-        })}
-      </div>
+      <main className="w-full p-4 bg-[#463F3A] flex justify-center flex-auto flex-shrink-0">
+        <div className="max-w-7xl w-full grid grid-cols-[repeat(auto-fit,_1rem)] justify-center items-center">
+          {myArr.map((val, index) => {
+            return (
+              <div
+                key={index}
+                className="array-div"
+                style={{ height: `${val * 5}px` }}
+              ></div>
+            );
+          })}
+        </div>
+      </main>
+
+      <footer className="w-full mt-auto bg-[#8EB1C7] p-4 flex justify-center">
+        Kalooli
+      </footer>
     </div>
   );
 }
