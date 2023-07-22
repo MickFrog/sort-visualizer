@@ -16,6 +16,14 @@ code {
     monospace;
 }
 
+button {
+  @apply scale-100 p-2 text-[#463F3A] rounded-md border-2 border-[#463F3A] flex items-center bg-orange-600 transition-transform;
+}
+
+button:hover {
+  @apply bg-[#463F3A] text-orange-600;
+}
+
 .array-div {
   @apply bg-orange-600;
 }

@@ -7,15 +7,15 @@ const myArr = [
 
 function App() {
   return (
-    <div className="w-screen flex flex-col items-center">
+    <div className="min-h-screen w-screen flex flex-col items-center">
       <header className="w-full bg-[#8EB1C7] p-4 flex justify-center">
         <div className="max-w-7xl w-full flex justify-between items-center">
           <h1 className="text-xl h-10">Sort visualizer</h1>
-          <div className="text-xl h-10 flex gap-2">
-            <button>Algorithm1</button>
-            <button>Algorithm2</button>
-            <button>Algorithm3</button>
-            <button>Algorithm4</button>
+          <div className="text-xl h-10 flex gap-4">
+            <button>Insertion Sort</button>
+            <button>Bubble Sort</button>
+            <button>Merge Sort</button>
+            <button>Quick Sort</button>
           </div>
         </div>
       </header>
@@ -35,7 +35,17 @@ function App() {
       </main>
 
       <footer className="w-full mt-auto bg-[#8EB1C7] p-4 flex justify-center">
-        Kalooli
+        <p>
+          Copyright &copy;{" "}
+          <a
+            className="underline decoration-orange-600 decoration-4"
+            href="https://www.github.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            MickFrog
+          </a>
+        </p>
       </footer>
     </div>
   );
