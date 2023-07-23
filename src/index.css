@@ -35,3 +35,7 @@ button:hover {
 .array-div {
   @apply bg-orange-600;
 }
+
+.div-green {
+  @apply bg-green-600;
+}

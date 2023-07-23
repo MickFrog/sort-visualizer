@@ -1,7 +1,7 @@
 let divsArray = [];
 
 const sleepFn = () => {
-  return new Promise((resolve) => setTimeout(resolve, 120));
+  return new Promise((resolve) => setTimeout(resolve, 20));
 };
 
 export const loadDivs = (divs) => {
@@ -68,13 +68,17 @@ export async function bubbleSort(inArr) {
     for (j; j < i; j++) {
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        //Show sort on divs
         divsArray[j].style.height = arr[j] * 5 + "px";
-        divsArray[j].style.backgroundColor = "lightgreen";
-        //bars[j].innerText = array[j];
+        divsArray[j].classList.add("div-green");
+
         divsArray[j + 1].style.height = arr[j + 1] * 5 + "px";
-        divsArray[j + 1].style.backgroundColor = "lightgreen";
-        await sleepFn();
+        divsArray[j + 1].classList.add("div-green");
       }
+      await sleepFn();
+
+      divsArray[j].classList.remove("div-green");
+      divsArray[j + 1].classList.remove("div-green");
     }
   }
 
