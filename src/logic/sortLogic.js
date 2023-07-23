@@ -1,3 +1,10 @@
+let divsArray = [];
+
+export const loadDivs = (divs) => {
+  //store bars divs
+  divsArray = divs;
+};
+
 export const mergeSort = (inArr) => {
   //create copy on input array
   let arr = [...inArr];
