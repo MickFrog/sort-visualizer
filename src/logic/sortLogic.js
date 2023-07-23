@@ -1,5 +1,9 @@
 let divsArray = [];
 
+const sleepFn = () => {
+  return new Promise((resolve) => setTimeout(resolve, 120));
+};
+
 export const loadDivs = (divs) => {
   //store bars divs
   divsArray = divs;
@@ -53,7 +57,7 @@ export const insertionSort = (inArr) => {
   return arr;
 };
 
-export const bubbleSort = (inArr) => {
+export async function bubbleSort(inArr) {
   //create copy on input array
   let arr = [...inArr];
 
@@ -64,12 +68,18 @@ export const bubbleSort = (inArr) => {
     for (j; j < i; j++) {
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        divsArray[j].style.height = arr[j] * 5 + "px";
+        divsArray[j].style.backgroundColor = "lightgreen";
+        //bars[j].innerText = array[j];
+        divsArray[j + 1].style.height = arr[j + 1] * 5 + "px";
+        divsArray[j + 1].style.backgroundColor = "lightgreen";
+        await sleepFn();
       }
     }
   }
 
   return arr;
-};
+}
 
 export const quickSort = (inArr) => {
   if (inArr.length < 2) return inArr;

@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import MyFooter from "./components/MyFooter";
 import MyHeader from "./components/MyHeader";
 import Content from "./components/Content";
 
-import { loadDivs } from "./logic/sortLogic";
+import { loadDivs, bubbleSort } from "./logic/sortLogic";
 
 const myArr = [
   87, 66, 42, 95, 56, 57, 74, 47, 62, 55, 85, 73, 77, 45, 39, 80, 69, 60, 43,
@@ -19,9 +19,13 @@ function App() {
     loadDivs(barsArrayRef.current?.children);
   }, [currArr]);
 
+  const runBubble = () => {
+    bubbleSort(currArr.current);
+  };
+
   return (
     <div className="min-h-screen w-screen flex flex-col items-center">
-      <MyHeader />
+      <MyHeader bubble={runBubble} />
 
       <Content arr={currArr.current} barsRef={barsArrayRef} />
 
