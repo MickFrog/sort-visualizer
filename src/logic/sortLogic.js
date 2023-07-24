@@ -53,7 +53,7 @@ export async function insertionSort(inArr) {
       divsArray[j].style.height = arr[j] * 5 + "px";
       divsArray[j].classList.add("div-green");
 
-      divsArray[j - 1].style.height = arr[j + 1] * 5 + "px";
+      divsArray[j - 1].style.height = arr[j - 1] * 5 + "px";
       divsArray[j - 1].classList.add("div-green");
 
       await sleepFn();
