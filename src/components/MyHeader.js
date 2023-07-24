@@ -1,8 +1,12 @@
 const MyHeader = (props) => {
-  const { bubble } = props;
+  const { bubble, insertion } = props;
 
   const handleBubble = () => {
     bubble();
+  };
+
+  const handleInsertion = () => {
+    insertion();
   };
 
   return (
@@ -10,7 +14,7 @@ const MyHeader = (props) => {
       <div className="max-w-7xl w-full flex justify-between items-center">
         <h1>Sort Visualizer</h1>
         <div className="text-xl h-10 flex gap-4">
-          <button>Insertion Sort</button>
+          <button onClick={handleInsertion}>Insertion Sort</button>
           <button onClick={handleBubble}>Bubble Sort</button>
           <button>Merge Sort</button>
           <button>Quick Sort</button>

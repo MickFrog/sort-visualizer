@@ -38,7 +38,7 @@ export const mergeSort = (inArr) => {
   return [...finalArr, ...sortedLeft, ...sortedRight];
 };
 
-export const insertionSort = (inArr) => {
+export async function insertionSort(inArr) {
   //create copy on input array
   let arr = [...inArr];
 
@@ -49,13 +49,25 @@ export const insertionSort = (inArr) => {
     while (j > 0 && arr[j] < arr[j - 1]) {
       //swapping with JS destructuring
       [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+      //Show sort on divs
+      divsArray[j].style.height = arr[j] * 5 + "px";
+      divsArray[j].classList.add("div-green");
+
+      divsArray[j - 1].style.height = arr[j + 1] * 5 + "px";
+      divsArray[j - 1].classList.add("div-green");
+
+      await sleepFn();
 
       j--;
+
+      //Turn back colors
+      divsArray[j].classList.remove("div-green");
+      divsArray[j + 1].classList.remove("div-green");
     }
   }
 
   return arr;
-};
+}
 
 export async function bubbleSort(inArr) {
   //create copy on input array
