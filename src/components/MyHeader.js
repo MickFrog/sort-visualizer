@@ -1,5 +1,5 @@
 const MyHeader = (props) => {
-  const { bubble, insertion, merge } = props;
+  const { bubble, insertion, merge, quick } = props;
 
   const handleBubble = () => {
     bubble();
@@ -13,6 +13,10 @@ const MyHeader = (props) => {
     merge();
   };
 
+  const handleQuick = () => {
+    quick();
+  };
+
   return (
     <header className="w-full bg-[#8EB1C7] p-4 flex justify-center">
       <div className="max-w-7xl w-full flex justify-between items-center">
@@ -21,7 +25,7 @@ const MyHeader = (props) => {
           <button onClick={handleInsertion}>Insertion Sort</button>
           <button onClick={handleBubble}>Bubble Sort</button>
           <button onClick={handleMerge}>Merge Sort</button>
-          <button>Quick Sort</button>
+          <button onClick={handleQuick}>Quick Sort</button>
         </div>
       </div>
     </header>

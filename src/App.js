@@ -8,6 +8,7 @@ import {
   bubbleSort,
   insertionSort,
   mergeSort,
+  quickSort,
 } from "./logic/sortLogic";
 
 const myArr = [
@@ -36,9 +37,18 @@ function App() {
     mergeSort(currArr.current);
   };
 
+  const runQuick = () => {
+    quickSort(currArr.current);
+  };
+
   return (
     <div className="min-h-screen w-screen flex flex-col items-center">
-      <MyHeader bubble={runBubble} insertion={runInsertion} merge={runMerge} />
+      <MyHeader
+        bubble={runBubble}
+        insertion={runInsertion}
+        merge={runMerge}
+        quick={runQuick}
+      />
 
       <Content arr={currArr.current} barsRef={barsArrayRef} />
 

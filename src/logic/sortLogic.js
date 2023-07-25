@@ -137,7 +137,11 @@ export async function bubbleSort(inArr) {
   return arr;
 }
 
-export const quickSort = (inArr) => {
+export async function quickSort(
+  inArr,
+  divStart = 0,
+  divEnd = divsArray.length - 1
+) {
   if (inArr.length < 2) return inArr;
 
   const arr = [...inArr];
@@ -148,6 +152,8 @@ export const quickSort = (inArr) => {
   const left = [];
   const right = [];
 
+  var pvtLeftDiv = divStart;
+
   //add elems less to left, greater to right
   for (const num of arr) {
     if (num < pivot) {
@@ -157,6 +163,25 @@ export const quickSort = (inArr) => {
     }
   }
 
+  const tmpArr = [...left, pivot, ...right];
+
+  //loop through left pivot divs
+  for (const i of tmpArr) {
+    //add green to left + move pivot to its right
+    divsArray[pvtLeftDiv].style.height = i * 5 + "px";
+    divsArray[pvtLeftDiv].classList.add("div-green");
+
+    await sleepFn();
+    //restore div color
+    divsArray[pvtLeftDiv].classList.remove("div-green");
+
+    pvtLeftDiv++;
+  }
+
   //return organised arr with pivot in the middle
-  return [...quickSort(left), pivot, ...quickSort(right)];
-};
+  return [
+    ...(await quickSort(left, divStart, divStart + left.length)),
+    pivot,
+    ...(await quickSort(right, divStart + left.length + 1, divEnd)),
+  ];
+}
