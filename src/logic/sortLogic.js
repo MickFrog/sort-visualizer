@@ -9,7 +9,11 @@ export const loadDivs = (divs) => {
   divsArray = divs;
 };
 
-export const mergeSort = (inArr) => {
+export async function mergeSort(
+  inArr,
+  divStart = 0,
+  divEnd = divsArray.length - 1
+) {
   //create copy on input array
   let arr = [...inArr];
 
@@ -17,26 +21,62 @@ export const mergeSort = (inArr) => {
     return arr;
   }
 
-  //sort left half of array
   const mid = Math.floor(arr.length / 2);
+  let divMid = Math.floor(divEnd / 2);
+  //sort left half of array
   const tempLeft = arr.slice(0, mid);
-  const sortedLeft = mergeSort(tempLeft);
+  const sortedLeft = await mergeSort(tempLeft, divStart, divMid);
 
   //sort right half of array
   const tempRight = arr.slice(mid);
-  const sortedRight = mergeSort(tempRight);
+  const sortedRight = await mergeSort(tempRight, divMid++, divEnd);
 
   //merge the two halves
   const finalArr = [];
+  var newElem;
   while (sortedLeft.length && sortedRight.length) {
     if (sortedLeft[0] < sortedRight[0]) {
-      finalArr.push(sortedLeft.shift());
+      newElem = sortedLeft.shift();
+      finalArr.push(newElem);
+
+      divStart++;
     } else {
-      finalArr.push(sortedRight.shift());
+      newElem = sortedRight.shift();
+      finalArr.push(newElem);
+
+      //Show sort on right
+      divsArray[divMid].classList.add("div-green");
+
+      divStart++;
+      divMid++;
     }
+
+    //Show sort on left (corresponding to finalArr) div
+    divsArray[divStart - 1].style.height = newElem * 5 + "px";
+    divsArray[divStart - 1].classList.add("div-green");
+
+    await sleepFn();
+    //restore div colors
+    divsArray[divStart - 1].classList.remove("div-green");
+    divsArray[divMid - 1].classList.remove("div-green");
   }
+
+  //loop through remaining divs to show arr merging
+  var remainingElems = [...sortedLeft, ...sortedRight];
+  for (let i = 0; i < remainingElems.length; i++) {
+    //Show sort on divs
+    divsArray[divStart].style.height = remainingElems[i] * 5 + "px";
+    divsArray[divStart].classList.add("div-green");
+
+    await sleepFn();
+    //restore div colors
+    divsArray[divStart].classList.remove("div-green");
+
+    divStart++;
+  }
+
   return [...finalArr, ...sortedLeft, ...sortedRight];
-};
+}
 
 export async function insertionSort(inArr) {
   //create copy on input array
