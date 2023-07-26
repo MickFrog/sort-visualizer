@@ -54,7 +54,11 @@ const MyHeader = (props) => {
             <button onClick={handleSpeedChange} name="medium">
               Medium
             </button>
-            <button onClick={handleSpeedChange} name="fast">
+            <button
+              className="active-speed"
+              onClick={handleSpeedChange}
+              name="fast"
+            >
               Fast
             </button>
           </fieldset>

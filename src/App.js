@@ -55,21 +55,25 @@ function App() {
     }
   };
 
-  const runBubble = () => {
-    bubbleSort(currArr);
-  };
+  async function runBubble() {
+    const newArr = await bubbleSort(currArr);
+    setCurrArr(newArr);
+  }
 
-  const runInsertion = () => {
-    insertionSort(currArr);
-  };
+  async function runInsertion() {
+    const newArr = await insertionSort(currArr);
+    setCurrArr(newArr);
+  }
 
-  const runMerge = () => {
-    mergeSort(currArr);
-  };
+  async function runMerge() {
+    const newArr = await mergeSort(currArr);
+    setCurrArr(newArr);
+  }
 
-  const runQuick = () => {
-    quickSort(currArr);
-  };
+  async function runQuick() {
+    const newArr = await quickSort(currArr);
+    setCurrArr(newArr);
+  }
 
   return (
     <div className="min-h-screen w-screen flex flex-col items-center">
