@@ -1,5 +1,8 @@
+import { useRef } from "react";
+
 const MyHeader = (props) => {
-  const { bubble, insertion, merge, quick, randomize } = props;
+  const { bubble, insertion, merge, quick, randomize, changeSpeed } = props;
+  const speedContainerRef = useRef(null);
 
   const handleBubble = () => {
     bubble();
@@ -21,15 +24,38 @@ const MyHeader = (props) => {
     randomize();
   };
 
+  const handleSpeedChange = (e) => {
+    const nameSpeed = e.target.name;
+    //changeSpeed
+    changeSpeed(nameSpeed);
+
+    //change active btn
+    const speedBtns = speedContainerRef.current?.children;
+    for (const btn of speedBtns) {
+      btn.classList.remove("active-speed");
+    }
+
+    e.target.classList.add("active-speed");
+  };
+
   return (
     <header className="w-full bg-[#8EB1C7] p-4 flex justify-center">
       <div className="max-w-7xl w-full flex justify-between items-center">
         <div className="flex gap-4 items-center">
           <h1>Sort Visualizer</h1>
-          <div className="flex gap-4 border-2 p-2 rounded">
-            <button name="slow">Slow</button>
-            <button name="medium">Medium</button>
-            <button name="fast">Fast</button>
+          <div
+            ref={speedContainerRef}
+            className="flex gap-4 border-2 p-2 rounded"
+          >
+            <button onClick={handleSpeedChange} name="slow">
+              Slow
+            </button>
+            <button onClick={handleSpeedChange} name="medium">
+              Medium
+            </button>
+            <button onClick={handleSpeedChange} name="fast">
+              Fast
+            </button>
           </div>
           <button onClick={handleRandomize}>Generate Array</button>
         </div>

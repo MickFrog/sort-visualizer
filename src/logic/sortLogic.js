@@ -1,7 +1,12 @@
 let divsArray = [];
+let speedFactor = 20;
 
 const sleepFn = () => {
-  return new Promise((resolve) => setTimeout(resolve, 20));
+  return new Promise((resolve) => setTimeout(resolve, speedFactor));
+};
+
+export const changeSpeed = (newSpeed) => {
+  speedFactor = newSpeed;
 };
 
 export const loadDivs = (divs) => {

@@ -36,6 +36,10 @@ input[type="radio"] {
   @apply accent-orange-600;
 }
 
+.active-speed {
+  @apply bg-[#463F3A] text-orange-600;
+}
+
 .array-div {
   @apply bg-orange-600 rounded-xl;
 }

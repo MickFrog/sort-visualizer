@@ -9,6 +9,7 @@ import {
   insertionSort,
   mergeSort,
   quickSort,
+  changeSpeed,
 } from "./logic/sortLogic";
 
 const myArr = [
@@ -35,6 +36,25 @@ function App() {
     setCurrArr(tmpArr);
   };
 
+  const handleChangeSpeed = (newSpeed) => {
+    switch (newSpeed) {
+      case "fast":
+        changeSpeed(20);
+        break;
+
+      case "medium":
+        changeSpeed(50);
+        break;
+
+      case "slow":
+        changeSpeed(100);
+        break;
+
+      default:
+        break;
+    }
+  };
+
   const runBubble = () => {
     bubbleSort(currArr);
   };
@@ -59,6 +79,7 @@ function App() {
         merge={runMerge}
         quick={runQuick}
         randomize={randomizeArray}
+        changeSpeed={handleChangeSpeed}
       />
 
       <Content arr={currArr} barsRef={barsArrayRef} />
