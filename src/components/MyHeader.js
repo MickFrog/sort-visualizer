@@ -43,10 +43,11 @@ const MyHeader = (props) => {
       <div className="max-w-7xl w-full flex justify-between items-center">
         <div className="flex gap-4 items-center">
           <h1>Sort Visualizer</h1>
-          <div
+          <fieldset
             ref={speedContainerRef}
             className="flex gap-4 border-2 p-2 rounded"
           >
+            <legend>Choose speed</legend>
             <button onClick={handleSpeedChange} name="slow">
               Slow
             </button>
@@ -56,7 +57,7 @@ const MyHeader = (props) => {
             <button onClick={handleSpeedChange} name="fast">
               Fast
             </button>
-          </div>
+          </fieldset>
           <button onClick={handleRandomize}>Generate Array</button>
         </div>
         <div className="text-xl h-10 flex gap-4">
