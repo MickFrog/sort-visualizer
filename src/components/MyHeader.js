@@ -62,6 +62,10 @@ const MyHeader = (props) => {
               Fast
             </button>
           </fieldset>
+          <fieldset className="border-2 p-2 rounded">
+            <legend>Array elements</legend>
+            <input type="range" min="10" max="200" />
+          </fieldset>
           <button onClick={handleRandomize}>Generate Array</button>
         </div>
         <div className="text-xl h-10 flex gap-4">

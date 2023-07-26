@@ -32,7 +32,8 @@ button:hover {
   @apply bg-[#463F3A] text-orange-600;
 }
 
-input[type="radio"] {
+input[type="radio"],
+input[type="range"] {
   @apply accent-orange-600;
 }
 
