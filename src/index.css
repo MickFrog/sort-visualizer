@@ -38,7 +38,7 @@ input[type="range"] {
 }
 
 button:disabled {
-  @apply bg-red-600 text-slate-950;
+  @apply bg-slate-400 text-slate-950;
 }
 
 .active-speed {
