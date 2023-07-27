@@ -1,7 +1,7 @@
 # Sort Visualizer
 
-    This is a project that aims to visualize different sorting algorithms at human conceivable speed.
-    The live app can be viewed [here](https://mickfrog.github.io/sort-visualizer).
+This is a project that aims to visualize different sorting algorithms at human conceivable speed.
+The live app can be viewed [here](https://mickfrog.github.io/sort-visualizer).
 
 ## Features
 
