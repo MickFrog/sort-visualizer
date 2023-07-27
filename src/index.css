@@ -41,6 +41,12 @@ input[type="range"] {
   @apply bg-[#463F3A] text-orange-600;
 }
 
+.array-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  @apply max-w-7xl w-full px-4 gap-1 justify-center items-center transition-all duration-300;
+}
+
 .array-div {
   @apply bg-orange-600 rounded-xl;
 }
