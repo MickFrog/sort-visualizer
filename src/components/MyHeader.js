@@ -4,6 +4,7 @@ const MyHeader = (props) => {
   const { bubble, insertion, merge, quick, randomize, changeSpeed } = props;
   const speedContainerRef = useRef(null);
   const [slideValue, setSlideValue] = useState(31);
+  const [isSorting, setIsSorting] = useState(false);
 
   useEffect(() => {
     randomize(slideValue);
@@ -11,21 +12,34 @@ const MyHeader = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slideValue]);
 
-  const handleBubble = () => {
-    bubble();
-  };
+  async function handleSorting(sortName) {
+    //disable array editing features
+    setIsSorting(true);
 
-  const handleInsertion = () => {
-    insertion();
-  };
+    switch (sortName) {
+      case "bubble":
+        await bubble();
+        break;
 
-  const handleMerge = () => {
-    merge();
-  };
+      case "insertion":
+        await insertion();
+        break;
 
-  const handleQuick = () => {
-    quick();
-  };
+      case "merge":
+        await merge();
+        break;
+
+      case "quick":
+        await quick();
+        break;
+
+      default:
+        break;
+    }
+
+    //re-enable editing features
+    setIsSorting(false);
+  }
 
   const handleRandomize = () => {
     randomize();
@@ -57,11 +71,19 @@ const MyHeader = (props) => {
           >
             <legend>Choose speed</legend>
 
-            <button onClick={handleSpeedChange} name="slow">
+            <button
+              onClick={handleSpeedChange}
+              name="slow"
+              disabled={isSorting}
+            >
               Slow
             </button>
 
-            <button onClick={handleSpeedChange} name="medium">
+            <button
+              onClick={handleSpeedChange}
+              name="medium"
+              disabled={isSorting}
+            >
               Medium
             </button>
 
@@ -69,6 +91,7 @@ const MyHeader = (props) => {
               className="active-speed"
               onClick={handleSpeedChange}
               name="fast"
+              disabled={isSorting}
             >
               Fast
             </button>
@@ -78,6 +101,7 @@ const MyHeader = (props) => {
             <legend>Array elements</legend>
 
             <input
+              disabled={isSorting}
               type="range"
               min="10"
               max="80"
@@ -86,14 +110,27 @@ const MyHeader = (props) => {
             />
           </fieldset>
 
-          <button onClick={handleRandomize}>Generate Array</button>
+          <button onClick={handleRandomize} disabled={isSorting}>
+            Generate Array
+          </button>
         </div>
         <fieldset className="p-2 text-xl flex flex-wrap justify-center gap-4 border-2">
           <legend>Algorithms</legend>
-          <button onClick={handleInsertion}>Insertion Sort</button>
-          <button onClick={handleBubble}>Bubble Sort</button>
-          <button onClick={handleMerge}>Merge Sort</button>
-          <button onClick={handleQuick}>Quick Sort</button>
+          <button
+            disabled={isSorting}
+            onClick={() => handleSorting("insertion")}
+          >
+            Insertion Sort
+          </button>
+          <button disabled={isSorting} onClick={() => handleSorting("bubble")}>
+            Bubble Sort
+          </button>
+          <button disabled={isSorting} onClick={() => handleSorting("merge")}>
+            Merge Sort
+          </button>
+          <button disabled={isSorting} onClick={() => handleSorting("quick")}>
+            Quick Sort
+          </button>
         </fieldset>
       </div>
     </header>
