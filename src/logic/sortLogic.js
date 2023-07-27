@@ -27,7 +27,8 @@ export async function mergeSort(
   }
 
   const mid = Math.floor(arr.length / 2);
-  let divMid = Math.floor(divEnd / 2);
+  let divMid =
+    arr.length % 2 !== 0 ? Math.floor(divEnd / 2) - 1 : Math.floor(divEnd / 2);
   //sort left half of array
   const tempLeft = arr.slice(0, mid);
   const sortedLeft = await mergeSort(tempLeft, divStart, divMid);
