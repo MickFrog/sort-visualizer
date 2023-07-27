@@ -40,39 +40,19 @@ export async function mergeSort(
 
   //merge the two halves
   const finalArr = [];
-  var newElem;
   while (sortedLeft.length && sortedRight.length) {
     if (sortedLeft[0] < sortedRight[0]) {
-      newElem = sortedLeft.shift();
-      finalArr.push(newElem);
-
-      divStart++;
+      finalArr.push(sortedLeft.shift());
     } else {
-      newElem = sortedRight.shift();
-      finalArr.push(newElem);
-
-      //Show sort on right
-      divsArray[divMid].classList.add("div-green");
-
-      divStart++;
-      divMid++;
+      finalArr.push(sortedRight.shift());
     }
-
-    //Show sort on left (corresponding to finalArr) div
-    divsArray[divStart - 1].style.height = newElem * 5 + "px";
-    divsArray[divStart - 1].classList.add("div-green");
-
-    await sleepFn();
-    //restore div colors
-    divsArray[divStart - 1].classList.remove("div-green");
-    divsArray[divMid - 1].classList.remove("div-green");
   }
 
-  //loop through remaining divs to show arr merging
-  var remainingElems = [...sortedLeft, ...sortedRight];
-  for (let i = 0; i < remainingElems.length; i++) {
+  //loop through remaining halves to show arr merging
+  var returnArr = [...finalArr, ...sortedLeft, ...sortedRight];
+  for (const i of returnArr) {
     //Show sort on divs
-    divsArray[divStart].style.height = remainingElems[i] * 5 + "px";
+    divsArray[divStart].style.height = i * 5 + "px";
     divsArray[divStart].classList.add("div-green");
 
     await sleepFn();
