@@ -71,7 +71,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen w-screen flex flex-col items-center">
+    <div className="min-h-screen w-full flex flex-col items-center">
       <MyHeader
         bubble={runBubble}
         insertion={runInsertion}

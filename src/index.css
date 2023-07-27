@@ -42,9 +42,7 @@ input[type="range"] {
 }
 
 .array-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-  @apply max-w-7xl w-full px-4 gap-1 justify-center items-center transition-all duration-300;
+  @apply max-w-7xl w-full px-4 gap-1 grid grid-cols-[repeat(auto-fit,_minmax(4px,_1fr))] justify-center items-center transition-all duration-300 overflow-auto;
 }
 
 .array-div {

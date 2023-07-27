@@ -46,11 +46,11 @@ const MyHeader = (props) => {
   };
 
   return (
-    <header className="w-full bg-[#8EB1C7] p-4 flex flex-col items-center">
+    <header className="w-full h-max bg-[#8EB1C7] p-4 flex flex-col items-center">
       <h1>SORT VISUALIZER</h1>
 
-      <div className="max-w-7xl w-full flex justify-between items-center">
-        <div className="flex gap-4 items-center">
+      <div className="max-w-7xl w-full flex flex-wrap gap-2 lg:justify-between justify-center items-center">
+        <div className="p-2 flex flex-wrap gap-4 items-center justify-center">
           <fieldset
             ref={speedContainerRef}
             className="flex gap-4 border-2 p-2 rounded"
@@ -88,12 +88,13 @@ const MyHeader = (props) => {
 
           <button onClick={handleRandomize}>Generate Array</button>
         </div>
-        <div className="text-xl h-10 flex gap-4">
+        <fieldset className="p-2 text-xl flex flex-wrap justify-center gap-4 border-2">
+          <legend>Algorithms</legend>
           <button onClick={handleInsertion}>Insertion Sort</button>
           <button onClick={handleBubble}>Bubble Sort</button>
           <button onClick={handleMerge}>Merge Sort</button>
           <button onClick={handleQuick}>Quick Sort</button>
-        </div>
+        </fieldset>
       </div>
     </header>
   );
