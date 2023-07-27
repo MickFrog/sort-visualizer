@@ -1,8 +1,15 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const MyHeader = (props) => {
   const { bubble, insertion, merge, quick, randomize, changeSpeed } = props;
   const speedContainerRef = useRef(null);
+  const [slideValue, setSlideValue] = useState(31);
+
+  useEffect(() => {
+    randomize(slideValue);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slideValue]);
 
   const handleBubble = () => {
     bubble();
@@ -22,11 +29,6 @@ const MyHeader = (props) => {
 
   const handleRandomize = () => {
     randomize();
-  };
-
-  const handleNewLength = (num) => {
-    //create another array of given length
-    randomize(num);
   };
 
   const handleSpeedChange = (e) => {
@@ -79,7 +81,8 @@ const MyHeader = (props) => {
               type="range"
               min="10"
               max="80"
-              onChange={(e) => handleNewLength(e.target.value)}
+              value={slideValue}
+              onChange={(e) => setSlideValue(e.target.value)}
             />
           </fieldset>
 

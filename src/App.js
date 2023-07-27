@@ -14,30 +14,21 @@ import {
 
 function App() {
   const [currArr, setCurrArr] = useState([]);
-  const [arrayLength, setArrayLength] = useState(30);
   const barsArrayRef = useRef(null);
-
-  useEffect(() => {
-    //create array on mount
-    randomizeArray();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     //load up bar divs every time currArr changes.
     loadDivs(barsArrayRef.current?.children);
   }, [currArr]);
 
-  const randomizeArray = (newLength = arrayLength) => {
-    setArrayLength(newLength);
-
+  const randomizeArray = (newLength = currArr.length) => {
     //generate an array of numbers less than 100
     let tmpArr = [];
-    for (let i = 0; i < arrayLength; i++) {
+    for (let i = 0; i < newLength; i++) {
       tmpArr.push(Math.floor(Math.random() * (100 - 10 + 1)) + 10);
     }
 
-    setCurrArr(tmpArr);
+    setCurrArr([...tmpArr]);
   };
 
   const handleChangeSpeed = (newSpeed) => {
