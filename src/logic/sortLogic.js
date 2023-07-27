@@ -1,5 +1,5 @@
 let divsArray = [];
-let speedFactor = 20;
+let speedFactor = 10;
 
 const sleepFn = () => {
   return new Promise((resolve) => setTimeout(resolve, speedFactor));

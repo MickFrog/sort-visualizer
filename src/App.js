@@ -19,6 +19,7 @@ const myArr = [
 
 function App() {
   const [currArr, setCurrArr] = useState(myArr);
+  const [arrayLength, setArrayLength] = useState(30);
   const barsArrayRef = useRef(null);
 
   useEffect(() => {
@@ -26,10 +27,12 @@ function App() {
     loadDivs(barsArrayRef.current?.children);
   }, [currArr]);
 
-  const randomizeArray = () => {
+  const randomizeArray = (newLength = arrayLength) => {
+    setArrayLength(newLength);
+
     //generate an array of numbers less than 100
     let tmpArr = [];
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < arrayLength; i++) {
       tmpArr.push(Math.floor(Math.random() * (100 - 10 + 1)) + 10);
     }
 
@@ -39,7 +42,7 @@ function App() {
   const handleChangeSpeed = (newSpeed) => {
     switch (newSpeed) {
       case "fast":
-        changeSpeed(20);
+        changeSpeed(10);
         break;
 
       case "medium":

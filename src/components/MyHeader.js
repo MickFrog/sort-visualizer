@@ -24,6 +24,11 @@ const MyHeader = (props) => {
     randomize();
   };
 
+  const handleNewLength = (num) => {
+    //create another array of given length
+    randomize(num);
+  };
+
   const handleSpeedChange = (e) => {
     const nameSpeed = e.target.name;
     //changeSpeed
@@ -39,21 +44,25 @@ const MyHeader = (props) => {
   };
 
   return (
-    <header className="w-full bg-[#8EB1C7] p-4 flex justify-center">
+    <header className="w-full bg-[#8EB1C7] p-4 flex flex-col items-center">
+      <h1>SORT VISUALIZER</h1>
+
       <div className="max-w-7xl w-full flex justify-between items-center">
         <div className="flex gap-4 items-center">
-          <h1>Sort Visualizer</h1>
           <fieldset
             ref={speedContainerRef}
             className="flex gap-4 border-2 p-2 rounded"
           >
             <legend>Choose speed</legend>
+
             <button onClick={handleSpeedChange} name="slow">
               Slow
             </button>
+
             <button onClick={handleSpeedChange} name="medium">
               Medium
             </button>
+
             <button
               className="active-speed"
               onClick={handleSpeedChange}
@@ -62,10 +71,18 @@ const MyHeader = (props) => {
               Fast
             </button>
           </fieldset>
+
           <fieldset className="border-2 p-2 rounded">
             <legend>Array elements</legend>
-            <input type="range" min="10" max="200" />
+
+            <input
+              type="range"
+              min="10"
+              max="80"
+              onChange={(e) => handleNewLength(e.target.value)}
+            />
           </fieldset>
+
           <button onClick={handleRandomize}>Generate Array</button>
         </div>
         <div className="text-xl h-10 flex gap-4">
