@@ -25,7 +25,7 @@ The live app can be viewed [here](https://mickfrog.github.io/sort-visualizer).
 
 ```
 git clone git@github.com:MickFrog/sort-visualizer.git
-cd mick-chat
+cd sort-visualizer
 npm install
 npm start
 ```
